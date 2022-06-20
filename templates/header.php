@@ -22,7 +22,7 @@ if ($_SESSION['s_usuario'] === null) {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CHECA</title>
+  <title>INBA</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 

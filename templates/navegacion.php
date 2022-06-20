@@ -1,10 +1,10 @@
-<aside class="main-sidebar sidebar-light-primary elevation-3 ">
+<aside class="main-sidebar sidebar-dark-success elevation-4 ">
   <!-- Brand Logo -->
 
   <a href="inicio.php" class="brand-link">
 
-    <img src="img/logob.png" alt="Bosque Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-bold">TECNIEM</span>
+    <img src="img/logob.png" alt="Bosque Logo" class="brand-image img-circle elevation-3" style="opacity: .8;background-color:white">
+    <span class="brand-text font-weight-bold">INBA</span>
   </a>
 
   <!-- Sidebar -->
@@ -35,15 +35,88 @@
           </a>
         </li>
 
+        <?php if ($_SESSION['s_rol'] == '3' || $_SESSION['s_rol'] == '2' || $_SESSION['s_rol'] == '5') { ?>
+
+          <li class="nav-item  has-treeview <?php echo ($pagina == 'empresa' ||  $pagina == 'proyecto'  ||  $pagina == 'proveedor' ||  $pagina == 'concepto') ? "menu-open" : ""; ?>">
+            <a href="#" class="nav-link  <?php echo ($pagina == 'empresa'  ||  $pagina == 'proyecto'  ||  $pagina == 'proveedor' ||  $pagina == 'concepto') ? "active" : ""; ?>">
+              <i class="nav-icon fas fa-bars "></i>
+              <p>
+                Catalogos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+
+
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="cntaempresa.php" class="nav-link <?php echo ($pagina == 'empresa') ? "active seleccionado" : ""; ?>  ">
+                  <i class="fas fa-city nav-icon"></i>
+                  <p>Empresa</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cntaproyecto.php" class="nav-link <?php echo ($pagina == 'proyecto') ? "active seleccionado" : ""; ?>  ">
+                  <i class="fas fa-road nav-icon"></i>
+                  <p>Proyecto</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cntaproveedor.php" class="nav-link <?php echo ($pagina == 'proveedor') ? "active seleccionado" : ""; ?>  ">
+                  <i class="fas fa-portrait nav-icon"></i>
+                  <p>Proveedor</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="cntaconcepto.php" class="nav-link <?php echo ($pagina == 'concepto') ? "active seleccionado" : ""; ?>  ">
+                  <i class="fas fa-screwdriver nav-icon"></i>
+                  <p>Concepto</p>
+                </a>
+              </li>
+
+
+
+            </ul>
+
+          </li>
+        <?php } ?>
+
+        <li class="nav-item has-treeview <?php echo ($pagina == 'cntacompras'  ) ? "menu-open" : ""; ?>">
+
+
+          <a href="#" class="nav-link <?php echo ($pagina == 'cntacompras'  ) ? "active" : ""; ?>">
+
+              <i class="fa-solid fa-file-lines nav-icon"></i>
+            <p>
+              Operaciones
+
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+
+
+            <li class="nav-item">
+              <a href="cntaordencompra.php" class="nav-link <?php echo ($pagina == 'cntacompras') ? "active seleccionado" : ""; ?>  ">
+
+                <i class="fa-regular fa-pen-to-square text-green  nav-icon"></i>
+                <p>Ordenes de Compra</p>
+              </a>
+            </li>
+          
+
+
+          </ul>
+        </li>
 
 
 
 
 
-
-
-
-        <?php if ($_SESSION['s_rol'] == '2') {
+        <?php if ($_SESSION['s_rol'] == '3') {
         ?>
           <hr class="sidebar-divider">
           <li class="nav-item">

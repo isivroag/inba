@@ -68,7 +68,7 @@ $message = "";
                       <th>TEL</th>
                       <th>CONTACTO</th>
                       <th>TEL CONTACTO</th>
-                      <th>ESPECIALIDAD</th>
+                
                       <th>ACCIONES</th>
                     </tr>
                   </thead>
@@ -84,7 +84,7 @@ $message = "";
                         <td><?php echo $dat['tel_prov'] ?></td>
                         <td><?php echo $dat['contacto_prov'] ?></td>
                         <td><?php echo $dat['telcon_prov'] ?></td>
-                        <td><?php echo $dat['especialidad'] ?></td>
+                   
 
                         <td></td>
                       </tr>
@@ -128,21 +128,6 @@ $message = "";
                 </div>
 
 
-                <div class="col-sm-6">
-                  <div class="form-group input-group-sm auto">
-                    <label for="especialidad" class="col-form-label">ESPECIALIDAD:</label>
-                    <select class="form-control" name="especialidad" id="especialidad">
-                      <?php
-                      foreach ($dataesp as $dtt) {
-                      ?>
-                        <option id="<?php echo $dtt['id_especialidad'] ?>" value="<?php echo $dtt['nom_especialidad'] ?>"> <?php echo $dtt['nom_especialidad'] ?></option>
-
-                      <?php
-                      }
-                      ?>
-                    </select>
-                  </div>
-                </div>
 
 
                 <div class="col-sm-12">

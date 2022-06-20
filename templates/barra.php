@@ -41,11 +41,11 @@ else{
   <!-- Site wrapper -->
   <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-dark ">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item"  >
-          <button class="nav-link btn btn-sm" style="border:none;background:none;" onclick="funcion()" data-widget="pushmenu" value="<?php echo $barra ?>" id="barra" href="#" ><i class="fas fa-bars"></i></button>
+          <button class="nav-link btn btn-sm text-white" style="border:none;background:none;" onclick="funcion()" data-widget="pushmenu" value="<?php echo $barra ?>" id="barra" href="#" ><i class="fas fa-bars"></i></button>
           <!--<a class="nav-link" data-widget="pushmenu" id="barra" href="#" role="button"><i class="fas fa-bars"></i></a>-->
         </li>
 
@@ -57,10 +57,10 @@ else{
 
 
       <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto ">
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="mr-2 d-none d-lg-inline text-gray-600 medium"><?php echo fechaC(); ?></span>
+            <span class="mr-2 d-none d-lg-inline text-white medium"><?php echo fechaC(); ?></span>
           </a>
         </li>
         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -70,9 +70,9 @@ else{
 
         <div class="topbar-divider d-none d-sm-block"></div>
         <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['s_nombre'] ; ?></span>
+        <li class="nav-item dropdown no-arrow ">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="mr-2 d-none d-lg-inline text-white small"><?php echo $_SESSION['s_nombre'] ; ?></span>
             <input type="hidden" id="rolusuario" name="rolusuario" value =<?php echo $_SESSION['s_rol'] ?>>
             <i class="fas fa-user"></i>
           </a>

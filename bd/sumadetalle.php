@@ -12,14 +12,14 @@ $total = 0;
 
 
 
-        $consulta = "SELECT sum(monto) as subtotal from orden_detalle 
-                    where folio_ord='$folio' GROUP BY id_reg";
+        $consulta = "SELECT monto from orden_detalle 
+                    where folio_ord='$folio'";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
-
+        $total=0;
         foreach ($data as $row) {
-            $total=$row['subtotal'];
+            $total+=$row['monto'];
         }
 
 

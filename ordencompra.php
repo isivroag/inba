@@ -29,9 +29,9 @@ if ($folio != "") {
 
         $fecha = $dt['fecha'];
         $id_prov = $dt['id_prov'];
-        $proveedor = $dt['nombre_prov'];
-        $id_proy = $dt['id_proy'];
-        $proyecto = $dt['nombre_proy'];
+        $proveedor = $dt['nom_prov'];
+        $id_proy = $dt['id_proyecto'];
+        $proyecto = $dt['nom_proy'];
         $concepto = $dt['concepto'];
         $total = $dt['total'];
     }
@@ -487,7 +487,7 @@ $datades = $resdes->fetchAll(PDO::FETCH_ASSOC);
                                                 </span>
                                             </div>
 
-                                            <input type="text" class="form-control text-right" name="total" id="total" value="<?php echo $total; ?>" onkeypress="return filterFloat(event,this);" disabled>
+                                            <input type="text" class="form-control text-right" name="total" id="total" value="<?php echo number_format($total,2); ?>" onkeypress="return filterFloat(event,this);" disabled>
                                         </div>
 
                                     </div>
@@ -661,3 +661,10 @@ $datades = $resdes->fetchAll(PDO::FETCH_ASSOC);
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+<script src="http://cdn.datatables.net/plug-ins/1.10.21/sorting/formatted-numbers.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>

@@ -105,6 +105,24 @@ $(document).ready(function () {
       },
       sProcessing: 'Procesando...',
     },
+
+    rowCallback: function (row, data) {
+      $($(row).find('td')[3]).addClass('text-right')
+      val = numeral(data[3]).format('0,0.00')
+      
+
+      $($(row).find('td')[3]).text(val)
+
+      val2 = numeral(data[5]).format('0,0.00')
+
+      $($(row).find('td')[5]).addClass('text-right')
+      $($(row).find('td')[5]).text(val2)
+
+      val3 = numeral(data[6]).format('0,0.00')
+
+      $($(row).find('td')[6]).addClass('text-right')
+      $($(row).find('td')[6]).text(val3)
+    },
   })
 
   //TABLA DESECHABLE
@@ -198,7 +216,7 @@ $(document).ready(function () {
     proyecto = $('#proyecto').val()
     concepto = $('#concepto').val()
 
-    total = $('#total').val()
+    total = $('#total').val().replace(/,/g, '')
     tokenid = $('#tokenid').val()
     opcion = $('#opcion').val()
 
@@ -297,12 +315,12 @@ $(document).ready(function () {
   $(document).on('click', '#btnagregarides', function () {
     folio = $('#folio').val()
     idcon = $('#idconcepto').val()
-    cantidad = $('#cantidadconcepto').val()
+    cantidad = $('#cantidadconcepto').val().replace(/,/g, '')
     concepto = $('#nomconcepto').val()
     unidad = $('#unidadm').val()
-    costo = $('#costou').val()
+    costo = $('#costou').val().replace(/,/g, '')
     clave = $('#claveconcepto').val()
-    subtotal = costo * cantidad
+    subtotal = parseFloat(costo) * parseFloat(cantidad)
     usuario = $('#nameuser').val()
     opcion = 1
 
@@ -351,7 +369,11 @@ $(document).ready(function () {
             data: { folio: folio },
             success: function (data) {
               total = data
-              $('#total').val(total)
+
+              var myNumeral = numeral(total)
+              var valor = myNumeral.format('0,0.00')
+              
+              $('#total').val(valor)
             },
           })
           limpiardes()
@@ -416,9 +438,10 @@ $(document).ready(function () {
   }
 
   // BORRAR MATERIAL
-  $(document).on('click', '.btnBorrar', function () {
+  $(document).on('click', '.btnBorrar', function (e) {
+    e.preventDefault()
     fila = $(this)
-
+    folio = $('#folio').val()
     id = parseInt($(this).closest('tr').find('td:eq(0)').text())
     usuario = $('#nameuser').val()
 
@@ -428,7 +451,7 @@ $(document).ready(function () {
       type: 'POST',
       url: 'bd/detalleorden.php',
       dataType: 'json',
-      data: { id: id, opcion: tipooperacion },
+      data: { id: id, opcion: tipooperacion, folio: folio },
       success: function (data) {
         if (data == 1) {
           tablaDetIndes.row(fila.parents('tr')).remove().draw()
@@ -440,10 +463,13 @@ $(document).ready(function () {
             async: false,
             data: { folio: folio, tipo: tipo },
             success: function (data) {
-              total = data
-              console.log(total)
-              $('#total').val(total)
-              calculoinverso(total)
+               total = data
+
+              var myNumeral = numeral(total)
+              var valor = myNumeral.format('0,0.00')
+            
+              $('#total').val(valor)
+             
             },
           })
         } else {
@@ -480,4 +506,16 @@ function filter(__val__) {
   var preg = /^([0-9]+\.?[0-9]{0,2})$/
   return preg.te
   st(__val__) === true
+}
+
+function addCommas(nStr) {
+  nStr += ''
+  x = nStr.split('.')
+  x1 = x[0]
+  x2 = x.length > 1 ? '.' + x[1] : ''
+  var rgx = /(\d+)(\d{3})/
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1' + ',' + '$2')
+  }
+  return x1 + x2
 }

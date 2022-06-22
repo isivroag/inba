@@ -34,7 +34,7 @@ switch ($opcion) {
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         $total=0;
         foreach ($data as $row) {
-            $total=$row['monto'];
+            $total+=$row['monto'];
         }
 
         $consulta = "UPDATE orden set total='$total' where folio_ord='$folio'";
@@ -65,7 +65,7 @@ switch ($opcion) {
             $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
             $total=0;
             foreach ($data as $row) {
-                $total=$row['monto'];
+                $total+=$row['monto'];
             }
     
             $consulta = "UPDATE orden set total='$total' where folio_ord='$folio'";
